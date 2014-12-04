@@ -1,15 +1,20 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: Дмитрий
- * Date: 04.12.2014
- * Time: 3:53
+ * Default controller of maintenance mode component for Yii framework 2.0
+ * @author Brusenskiy Dmitry <brussens@nativeweb.ru>
  */
 
 namespace brussens\maintenance;
 
+/**
+ * Class MaintenanceController
+ * @package brussens\maintenance
+ */
 class MaintenanceController extends \yii\web\Controller {
+    /**
+     * @return string
+     */
     public function actionIndex() {
-        return $this->render('index');
+        return $this->renderFile(\Yii::$app->maintenanceMode->viewPath);
     }
 } 

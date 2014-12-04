@@ -1,61 +1,33 @@
 <?php
+/**
+ * Default view of maintenance mode component for Yii framework 2.0
+ * @author Brusenskiy Dmitry <brussens@nativeweb.ru>
+ */
 use yii\helpers\Html;
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!DOCTYPE html>
+<html lang="<?= \Yii::$app->language ?>">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <meta name="language" content="en"/>
+    <meta charset="<?= \Yii::$app->charset ?>">
     <title><?= Html::encode(Yii::$app->name) ?></title>
-    <style type="text/css">
-        body {
-            background: #EFEFEF;
-            color: #555;
-            font: normal normal normal 10pt/normal Arial, Helvetica, sans-serif;
-            margin: 0px;
-            padding: 0px;
-        }
-        #header {
-            border-top: 3px solid #C9E0ED;
-            margin: 0px;
-            padding: 0px;
-        }
-        #logo {
-            font-size: 200%;
-            padding: 10px 20px;
-        }
-        #page {
-            width: 950px;
-            background: white;
-            border: 1px solid #C9E0ED;
-            margin: 5px auto;
-        }
-        #message {
-            padding: 20px;
-        }
-        #footer {
-            border-top: 1px solid #C9E0ED;
-            font-size: 0.8em;
-            margin: 10px 20px;
-            padding: 10px;
-            text-align: center;
-        }
+    <style>
+        body { text-align: center; padding: 150px; }
+        h1 { font-size: 50px; }
+        body { font: 20px Helvetica, sans-serif; color: #333; }
+        article { display: block; text-align: left; width: 650px; margin: 0 auto; }
+        a { color: #dc8100; text-decoration: none; }
+        a:hover { color: #333; text-decoration: none; }
     </style>
 </head>
 <body>
-<div id="page">
-    <div id="header">
-        <div id="logo"><?= Html::encode(Yii::$app->name) ?></div>
+<article>
+    <h1>We&rsquo;ll be back soon!</h1>
+    <div>
+        <p>
+            <?= Yii::$app->maintenanceMode->message ?>
+        </p>
     </div>
-    <div id="message">
-        <?= Yii::$app->maintenanceMode->message ?>
-    </div>
-    <div id="footer">
-        Copyright &copy; <?= date('Y') ?> by My Company.<br/>
-        All Rights Reserved.<br/>
-        <?= \Yii::powered() ?>
-    </div>
-</div>
+</article>
 </body>
 </html>
