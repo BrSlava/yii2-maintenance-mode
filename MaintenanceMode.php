@@ -47,7 +47,11 @@ class MaintenanceMode extends \yii\base\Component {
      * Allowed roles
      * @var array
      */
-    public $roles = ['administrator'];
+    public $roles = ['']; 
+    /**
+     * Не у всех прописаны роли(по умолчению их вроде как и нет) 
+     * /
+    
 
     /**
      * Allowed IP addresses
@@ -90,8 +94,15 @@ class MaintenanceMode extends \yii\base\Component {
         }
         if ($this->enabled) {
             $disable = in_array(\Yii::$app->user->identity->{$this->usernameAttribute}, $this->users);
+           /**
+            * При настройках по умолчанию, роли остуствуют (применимо к basic app) и выкидывает исключение 
+            */
+            
+            if ($roles) {
             foreach ($this->roles as $role) {
                 $disable = $disable || \Yii::$app->user->can($role);
+            }
+            
             }
             $disable = $disable || in_array(\Yii::$app->request->getPathInfo(), $this->urls);
             $disable = $disable || in_array(\Yii::$app->request->userIP, $this->ips);
