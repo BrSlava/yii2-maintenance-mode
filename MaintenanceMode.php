@@ -89,10 +89,16 @@ class MaintenanceMode extends \yii\base\Component {
             $this->message.= ', otherwise we&rsquo;ll be back online shortly!';
         }
         if ($this->enabled) {
-            $disable = in_array(\Yii::$app->user->identity->{$this->usernameAttribute}, $this->users);
-            foreach ($this->roles as $role) {
-                $disable = $disable || \Yii::$app->user->can($role);
-            }
+            if (!\Yii::$app->user->isGuest) {
+                $disable = in_array(\Yii::$app->user->identity->{$this->usernameAttribute}, $this->users);
+            } else {
+                $disable = false;
+}
+        if (!$this->roles) {
+                foreach ($this->roles as $role) {
+                    $disable = $disable || \Yii::$app->user->can($role);
+                }
+        }
             $disable = $disable || in_array(\Yii::$app->request->getPathInfo(), $this->urls);
             $disable = $disable || in_array(\Yii::$app->request->userIP, $this->ips);
             if (!$disable) {
