@@ -36,7 +36,7 @@ Add to your config file:
   'class' => '\brussens\maintenance\MaintenanceMode',
   
   // Mode status
-  'enable'=>true,
+  'enabled'=>true,
   
   // Route to action
   'route'=>'maintenance/index',
@@ -49,7 +49,7 @@ Add to your config file:
     'BrusSENS',
   ],
   
-  // Allowed roles
+  // Allowed roles - only for Advanced tamplate
   'roles'=>[
     'administrator',
   ],
