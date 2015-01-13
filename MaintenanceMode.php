@@ -47,7 +47,7 @@ class MaintenanceMode extends \yii\base\Component {
      * Allowed roles
      * @var array
      */
-    public $roles = ['administrator'];
+    public $roles = [''];
 
     /**
      * Allowed IP addresses
